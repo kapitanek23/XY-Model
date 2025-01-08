@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symulacja modelu XY</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Symulacja modelu XY</h1>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <div>
+        <label for="temperature">Temperatura:</label>
+        <input type="range" id="temperature" min="0" max="10" step="0.1" value="2.5" oninput="updateTemperatureLabel(this.value)">
+        <span id="temperature-value">2.5</span>
+    </div>
+    <div>
+        <label for="width">Szerokość siatki:</label>
+        <input type="range" id="width" min="5" max="50" step="1" value="10" oninput="updateWidthLabel(this.value)">
+        <span id="width-value">10</span>
+    </div>
+    <div>
+        <label for="time-step">Krok czasowy:</label>
+        <input type="range" id="time-step" min="0.01" max="0.2" step="0.01" value="0.05" oninput="updateTimeStepLabel(this.value)">
+        <span id="time-step-value">0.05</span>
+    </div>
+    <div>
+        <label for="steps-per-frame">Kroki na klatkę:</label>
+        <input type="range" id="steps-per-frame" min="1" max="20" step="1" value="1" oninput="updateStepsPerFrameLabel(this.value)">
+        <span id="steps-per-frame-value">1</span>
+    </div>
+    <div>
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+        <button id="equilibrate-button">Równoważenie</button>
+    </div>
+    <div>
+        <p id="energy-value">Energia: 0.0000</p>
+    </div>
+
+    <section class="info-section">
+        <h2>Opis funkcji</h2>
+        <p><strong>Temperatura:</strong> Zmień temperaturę systemu (0 - bardzo zimny, 10 - bardzo gorący).</p>
+        <p><strong>Szerokość siatki:</strong> Zmień liczbę spinów w jednej linii siatki.</p>
+        <p><strong>Krok czasowy:</strong> Określa czas między kolejnymi aktualizacjami symulacji (mniejsze wartości zwiększają dokładność).</p>
+        <p><strong>Kroki na klatkę:</strong> Liczba kroków Monte Carlo wykonywanych przed każdą aktualizacją wizualizacji.</p>
+        <h2>Przyciski:</h2>
+             <p><strong>Start:</strong> Rozpoczyna symulację.</p>
+             <p><strong>Stop:</strong> Zatrzymuje symulację.</p>
+             <p><strong>Równoważenie:</strong> Doprowadza układ do stanu równowagi.</p>
+    </section>
+
+    <script src="/static/script.js"></script>
+</body>
+
+<footer>
+    <p>Wykonali: Anna Oleszko, Bartosz Kawalec, Kacper Saj</p>
+</footer>
+</html>
