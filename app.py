@@ -62,13 +62,13 @@ def get_data():
     """Zwraca aktualny stan systemu."""
     spins = xy_system.spin_config.tolist()
     vortices, antivortices = xy_system.find_vortices()
-    current_energy = xy_system.get_energy()  # Oblicz energię
+    current_energy = xy_system.get_energy()
 
     return jsonify({
         'spins': spins,
         'temperature': xy_system.temperature,
         'width': xy_system.width,
-        'energy': current_energy,  # Wysyłaj energię do frontendu
+        'energy': current_energy,
         'vortices': vortices,
         'antivortices': antivortices,
         'canvas_scale': canvas_scale
@@ -127,9 +127,11 @@ def equilibrate_system():
     max_sweeps = 1000  # Maksymalna liczba iteracji
     tolerance = 1e-4  # Tolerancja zmiany energii
     prev_energy = xy_system.get_energy()
+    steps_to_equilibrium = 0  # Liczba kroków do równowagi
 
     for _ in range(max_sweeps):
         xy_system.sweep()
+        steps_to_equilibrium += 1
         current_energy = xy_system.get_energy()
         if abs(current_energy - prev_energy) < tolerance:
             break
@@ -146,7 +148,8 @@ def equilibrate_system():
         'width': xy_system.width,
         'energy': prev_energy,
         'vortices': vortices,
-        'antivortices': antivortices
+        'antivortices': antivortices,
+        'steps_to_equilibrium': steps_to_equilibrium  # Liczba kroków do równowagi
     })
 
 if __name__ == '__main__':

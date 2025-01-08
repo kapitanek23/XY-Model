@@ -106,6 +106,7 @@ async function equilibrateSystem() {
 
     drawSpins(data.spins, data.width, data.vortices, data.antivortices);
     document.getElementById('energy-value').textContent = `Energia: ${data.energy.toFixed(4)}`;
+    document.getElementById('steps-value').textContent = `Kroki do równowagi: ${data.steps_to_equilibrium}`; // Nowa linia
 }
 
 document.getElementById('temperature').addEventListener('input', updateSystemParams);
