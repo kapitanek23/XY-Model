@@ -6,6 +6,8 @@ An interactive simulation of a two-dimensional XY spin system using **Metropolis
 
 **Team:** Anna Oleszko, Bartosz Kawalec, and Kacper Saj.
 
+**Acknowledgment:** The simulation builds on [Shiling42/XY-MODEL](https://github.com/Shiling42/XY-MODEL), as credited in this repository's description.
+
 ## Features
 
 - Simulate planar spins on a square lattice with periodic boundary conditions.
